@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Kendo UI Snippet</title>
+
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/6.7.0/default/default-ocean-blue.css" />
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2023.2.829/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2023.2.829/js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/6.7.0/default/default-main.css" />
+    <script src="https://kendo.cdn.telerik.com/2023.2.829/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2023.2.829/mjs/kendo.all.js" type="module"></script>
+     <style>
+         body{
+            
+         }
+        #grid{
+            margin-left:40px;
+        }
+
+        .btn{
+            margin-left:35px;
+            margin-bottom:15px;
+        }
+     </style>
+</head>
+<body>
+ 
+    <h4>Employee Record :-</h4>
+    <a href="/Add/Adddata" class="btn btn-info btn-block">Add Data</a>
+   
+    <div id="grid"></div>
+    <script>
+        $("#grid").kendoGrid({
+            columns: [
+                { field: "id", title: "Id", width: "80px", editable: false },
+                { field: "name", title: "Name", width: "140px" },
+                { field: "number", title: "Phone", width: "140px" },
+                { field: "email", title: "Email", width: "160px" },
+                { field: "city", title: "City", width: "90px" },
+                {
+                    command: [
+                        { name: "edit" },
+                        { name: "destroy", text: "Remove" }
+                    ],
+                    width: "180px"
+                },
+            ],
+            toolbar: ["Create ", "search"],
+            editable: "inline",
+            size: "medium",
+            width: 1000,
+            columnMenu: {
+                messages: {
+                    columns: "select columns"
+
+                }
+            },
+
+            dataSource: {
+
+                transport: {
+                    read: {
+                        url: "/Add/Show/",
+                        dataType: "json"
+                     },
+
+                    create: {
+                        url: "/Add/Create/",
+                        dataType: "json",
+                        type: 'POST'
+                    },
+
+                    update: {
+                        url: "/Add/Edit/",
+                        dataType: "json",
+                        type: 'POST'
+                    },
+                    destroy: {
+                        url: "/Add/Destroy/",
+                        dataType: "json",
+                        type: 'POST'
+
+                    }
+
+                },
+
+                schema: {
+                    model: {
+                    id: "id",
+                        fields: {
+                            id: { type: "number" },
+                            name: { type: "string" },
+                            number: { type: "string" },
+                            email: { type: "string" },
+                            city: { type: "string" }
+                        }
+                    }
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>
+

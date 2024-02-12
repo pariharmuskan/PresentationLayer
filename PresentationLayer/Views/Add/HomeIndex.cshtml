@@ -1,0 +1,136 @@
+﻿
+
+
+@model IEnumerable<DataAccessLayers.Entityes.Employee>
+
+@* @{
+    ViewData["Title"] = "HomeIndex";
+}
+
+<h1>HomeIndex</h1>
+
+<p>
+    <a asp-action="Adddata" asp-controller="Add">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Destroy", new { id = item.Id })
+                </td>
+        </tr>
+}
+    </tbody>
+</table> *@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+
+</head>
+
+<body>
+    <a href="/Add/Adddata" class="button-link">Create</a>
+    <div id="jsGrid"></div>
+
+    <script>
+        $("#jsGrid").jsGrid({
+            width: "100%",
+            height: "400px",
+            inserting: true,
+            editing: true,
+            sorting: true,
+            paging: true,
+            autoload: true,
+            pageSize: 10,
+            controller: {
+                loadData: function (filter) {
+                    return $.ajax({
+                        type: "GET",
+                        url: "/Add/HomeIndex11",
+                        dataType: "json",
+                        data: filter
+                    });
+                },
+                insertItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Add/Create",
+                        data: item,
+                        dataType: "json",
+                        success: function () {
+                            location.reload();
+                        }
+                    });
+                },
+                updateItem: function (item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/Add/Edit",
+                        data: item,
+                        dataType: "json"
+                    });
+                },
+                deleteItem: function (item) {
+                    return $.ajax({
+                        type: "DELETE",
+                        url: "/Add/Destroy",
+                        data: { Id: item.id },
+                        dataType: "json"
+                    });
+                }
+            },
+            fields: [
+                { name: "name", type: "text", width: 150 },
+                { name: "email", type: "text", width: 150 },
+                { name: "number", type: "number", width: 150, align: "center" },
+                { name: "city", type: "text" },
+                { type: "control" }
+            ]
+        });
+
+    </script>
+</body>
+</html>
+

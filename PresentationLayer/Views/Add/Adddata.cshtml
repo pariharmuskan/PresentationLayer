@@ -1,0 +1,150 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .color {
+            color: white;
+        }
+
+        .heading {
+            margin-top: 10px;
+        }
+
+        .card {
+            max-width: 450px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+     /*    h3 {
+            text-align: center;
+            background-color: plum;
+            padding: 10px;
+            border-radius: 10px;
+        } */
+
+        label {
+            font-weight: bold;
+        }
+
+        .mb-3 {
+            margin-bottom: 20px;
+        }
+
+        .btn-info {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+  
+
+    <h3 class="heading"><b>Add Student</b></h3>
+
+    <div class="card">
+        <form action="/Add/Create" method="post" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label for="Name">Name:</label>
+                <input type="text" class="form-control" id="name" name="Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Number">Number:</label>
+                <input type="text" class="form-control" id="number" name="number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Email">Email:</label>
+                <input type="email" class="form-control" id="email" name="Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="City">City:</label>
+                <input type="text" class="form-control" id="city" name="City" required>
+            </div>
+
+            <div class=" center">
+                <button type="submit" class="btn btn-info">Submit</button>
+            </div>
+        </form>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+@* <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Employee Information Form</h2>
+
+        <form action="/Add/Create" method="post">
+            <div class="form-group">
+                <label for="Name">Name:</label>
+                <input type="text" class="form-control" id="name" name="Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Number">Number:</label>
+                <input type="text" class="form-control" id="number" name="number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Email">Email:</label>
+                <input type="email" class="form-control" id="email" name="Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="City">City:</label>
+                <input type="text" class="form-control" id="city" name="City" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Add Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+ *@
